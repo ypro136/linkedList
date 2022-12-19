@@ -28,7 +28,7 @@ void linkedList::insertInMiddle(unsigned int index, int new_data)
 	if (index > 0)
 	{
 		node* previous = head;
-		for (int i = 0; i < index; i++)
+		for (int i = 0; i < index - 1; i++)
 		{
 			previous = previous->next;
 		}
@@ -37,8 +37,8 @@ void linkedList::insertInMiddle(unsigned int index, int new_data)
 	}
 	else
 	{
-		new_node->next = head->next;
-		head->next = new_node;
+		new_node->next = head;
+		head = new_node;
 	}
 	
 }
@@ -51,11 +51,19 @@ void linkedList::append(int data)
 	temp->data = data;
 	temp->next = nullptr;
 
-	while (p->next != nullptr)
+	if (p != nullptr)
 	{
-		p = p->next;
+		while (p->next != nullptr)
+		{
+			p = p->next;
+		}
+		p->next = temp;
 	}
-	p->next = temp;
+	else
+	{
+		head = temp;
+	}
+
 }
 
 void linkedList::deleteNode(unsigned int index)
@@ -63,18 +71,17 @@ void linkedList::deleteNode(unsigned int index)
 	node* p = head;
 	if (index > 0)
 	{
-		node* previous = head;
-		for (int i = 0; i < index; i++)
+		for (int i = 0; i < index - 1; i++)
 		{
-			previous = previous->next;
+			p = p->next;
 		}
-		node* temp = previous->next;
-		previous->next = previous->next->next;
+		node* temp = p->next;
+		p->next = p->next->next;
 		delete(temp);
 	}
 	else
 	{
-		head->next = p->next;
+		head = p->next;
 		delete(p);
 	}
 }
@@ -88,6 +95,6 @@ void linkedList::display()
 		cout << p->data << ", ";
 		p = p->next;
 	}
-	cout << "} ";
+	cout << "\b\b} ";
 }
 
