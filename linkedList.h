@@ -24,12 +24,12 @@ public:
 
 	void append(int data = 0);
 
-	void deleteNode(int index);
+	void deleteNode(unsigned int index);
 	//hear
 
-	node* insertInStart(int new_data = 0);
+	void insertInStart(int new_data);
 
-	void insertInMiddle(int index, int new_data);
+	void insertInMiddle(unsigned int index, int new_data);
 
 	void display();
 
