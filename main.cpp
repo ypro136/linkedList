@@ -21,8 +21,6 @@ int main()
     list.insertInMiddle(3, 24);
     list.deleteNode(2);
 
-    cout << "The linked list is: ";
-
     list.display();
 
     return 0;
