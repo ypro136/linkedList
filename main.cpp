@@ -8,7 +8,7 @@ linkedList list;
 
 int main() 
 {
-
+    //bbb
     for (int i = 0; i < 10; i++)
     {
         list.append(i);
